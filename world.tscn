@@ -430,7 +430,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -459,7 +459,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_left_down",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -488,7 +488,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_left_up",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -517,7 +517,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_right_down",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -546,7 +546,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_right_up",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -575,7 +575,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -604,7 +604,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 14.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -633,7 +633,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left_down",
-"speed": 14.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -662,7 +662,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left_up",
-"speed": 14.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -691,7 +691,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right_down",
-"speed": 14.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -720,7 +720,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right_up",
-"speed": 14.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -749,7 +749,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 14.0
+"speed": 20.0
 }]
 
 [node name="World" type="Node2D"]
@@ -762,9 +762,9 @@ shape = SubResource("RectangleShape2D_aqk2v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_kb3vm")
-animation = &"walk_right_up"
+animation = &"idle_up"
 autoplay = "idle_down"
-frame_progress = 0.462572
+frame_progress = 0.784885
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)
