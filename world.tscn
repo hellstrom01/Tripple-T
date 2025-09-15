@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://b578wc3pc3kna"]
+[gd_scene load_steps=119 format=3 uid="uid://b578wc3pc3kna"]
 
 [ext_resource type="Script" uid="uid://d2kidjo7m32vn" path="res://Player.gd" id="1_fj7yv"]
 [ext_resource type="Texture2D" uid="uid://bvsd2b6holrku" path="res://Sprites/Player/Idle/idle_down.png" id="2_2o6r5"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://c5igcq5016wf" path="res://Sprites/Player/Walk/walk_right_down.png" id="11_wukud"]
 [ext_resource type="Texture2D" uid="uid://7gifcynhr7sl" path="res://Sprites/Player/Walk/walk_right_up.png" id="12_il2jm"]
 [ext_resource type="Texture2D" uid="uid://3ybukv4tnqsn" path="res://Sprites/Player/Walk/walk_up.png" id="13_wjb0r"]
+[ext_resource type="Script" uid="uid://bgti48t1vixg5" path="res://enemy.gd" id="14_hiqwa"]
+[ext_resource type="Texture2D" uid="uid://c3mm5j7518xxy" path="res://Sprites/Player/Idle/idle.png" id="15_2u3nc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aqk2v"]
 size = Vector2(17, 33)
@@ -752,6 +754,42 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_udxuc"]
+atlas = ExtResource("15_2u3nc")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikiii"]
+atlas = ExtResource("15_2u3nc")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbp6q"]
+atlas = ExtResource("15_2u3nc")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26xuy"]
+atlas = ExtResource("15_2u3nc")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bc84e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udxuc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikiii")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbp6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26xuy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="World" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -768,3 +806,12 @@ frame_progress = 0.784885
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(5, 5)
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+script = ExtResource("14_hiqwa")
+target_path = NodePath("../Player")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+sprite_frames = SubResource("SpriteFrames_bc84e")
