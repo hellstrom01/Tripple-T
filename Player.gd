@@ -1,13 +1,19 @@
 extends CharacterBody2D
 
 var movespeed = 500
+@export var weapon_scene: PackedScene
+var weapon: Node
+
 @onready var sprite = $AnimatedSprite2D
 
 func _ready():
-	pass
+	weapon = weapon_scene.instantiate()
+	add_child(weapon)   # Weapon follows the player
+	weapon.owner = self # So weapon can access player’s position
 	
 	
 func _physics_process(delta: float) -> void:
+	
 	var motion = Vector2()
 	
 	if Input.is_action_pressed("up"):
@@ -23,7 +29,12 @@ func _physics_process(delta: float) -> void:
 
 	velocity = motion.normalized() * movespeed
 	move_and_slide()
+	
+	if Input.is_action_pressed("LMB"):
+		weapon.shoot()
+		
 	_update_animation(motion)
+	
 	
 	
 
@@ -66,7 +77,6 @@ func _update_animation(motion: Vector2) -> void:
 	
 	sprite.play()
 	
-
 	
 	
 	
