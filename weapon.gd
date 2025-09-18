@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var bullet_scene: PackedScene
-@export var fire_rate := 0.1
+@export var fire_rate := 0.5
 @export var bullet_speed := 1000.0
 
 @onready var shoot_sound: AudioStreamPlayer2D = $ShootSound

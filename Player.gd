@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-var movespeed = 500
+var movespeed = 250
 @export var weapon_scene: PackedScene
 var weapon: Node
+var facing_dir = "down"
 
 @onready var sprite = $AnimatedSprite2D
 
@@ -32,52 +33,37 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_pressed("LMB"):
 		weapon.shoot()
-		
+	
+	_update_facing_direction()
 	_update_animation(motion)
 	
 	
+func _update_facing_direction() -> void:
+	var mouse_pos: Vector2 = get_global_mouse_position()
+	var to_mouse: Vector2 = (mouse_pos - global_position).normalized()
+	var angle: float = to_mouse.angle() # Radians, 0 = right
+	angle = wrapf(angle, -PI, PI)
 	
+	
+	if angle >= -PI and angle < -2.0 * PI / 3.0:
+		facing_dir = "left_up"
+	elif angle >= -2.0 * PI / 3.0 and angle < -PI / 3.0:
+		facing_dir = "up"
+	elif angle >= -PI / 3.0 and angle < 0.0:
+		facing_dir = "right_up"
+	elif angle >= 0.0 and angle < PI / 3.0:
+		facing_dir = "right_down"
+	elif angle >= PI / 3.0 and angle < 2.0 * PI / 3.0:
+		facing_dir = "down"
+	else:
+		facing_dir = "left_down"
 
 func _update_animation(motion: Vector2) -> void:
 	if motion == Vector2.ZERO:
-		# Player is idle, keep last direction
-		match sprite.animation:
-			"walk_up":
-				sprite.animation = "idle_up"
-			"walk_down":
-				sprite.animation = "idle_down"
-			"walk_left_up":
-				sprite.animation = "idle_left_up"
-			"walk_right_up":
-				sprite.animation = "idle_right_up"
-			"walk_left_down":
-				sprite.animation = "idle_left_down"
-			"walk_right_down":
-				sprite.animation = "idle_right_down"
-		sprite.play()
-		return
-		
-	if motion.x > 0:
-		if motion.y < 0:
-			sprite.animation = "walk_right_up"
-		else:
-			sprite.animation = "walk_right_down"
-			
-	elif motion.x < 0:
-		if motion.y < 0:
-			sprite.animation = "walk_left_up"
-		else:
-			sprite.animation = "walk_left_down"
-			
+		sprite.animation = "idle_" + facing_dir
 	else:
-		if motion.y < 0:
-			sprite.animation = "walk_up"
-		else:
-			sprite.animation = "walk_down"
-	
+		sprite.animation = "walk_" + facing_dir
 	sprite.play()
-	
-	
 	
 	
 	
