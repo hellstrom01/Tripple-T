@@ -1,7 +1,7 @@
 [gd_scene load_steps=113 format=3 uid="uid://c01c3n8mm8r84"]
 
 [ext_resource type="Script" uid="uid://d2kidjo7m32vn" path="res://Player.gd" id="1_bwjto"]
-[ext_resource type="PackedScene" uid="uid://bwwnoigv4bkp7" path="res://weapon.tscn" id="2_606se"]
+[ext_resource type="PackedScene" uid="uid://bjhroagbfq3sc" path="res://sniper.tscn" id="2_bwjto"]
 [ext_resource type="Texture2D" uid="uid://bvsd2b6holrku" path="res://Sprites/Player/Idle/idle_down.png" id="3_u1c27"]
 [ext_resource type="Texture2D" uid="uid://d0lsrlwhbtxi2" path="res://Sprites/Player/Idle/idle_left_down.png" id="4_op7ga"]
 [ext_resource type="Texture2D" uid="uid://csuyijcc1x5gb" path="res://Sprites/Player/Idle/idle_left_up.png" id="5_q13i1"]
@@ -755,7 +755,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_bwjto")
-weapon_scene = ExtResource("2_606se")
+weapon_scene = ExtResource("2_bwjto")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -2)
@@ -765,9 +765,10 @@ shape = SubResource("RectangleShape2D_aqk2v")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_kb3vm")
-animation = &"idle_up"
+animation = &"idle_down"
 autoplay = "idle_down"
-frame_progress = 0.784885
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+
+[node name="WeaponAnchor" type="Node2D" parent="."]
+position = Vector2(-2, 3)

@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://b578wc3pc3kna"]
 
-[ext_resource type="PackedScene" uid="uid://cjxm0g2lx3gl6" path="res://player.tscn" id="1_tlwt5"]
-[ext_resource type="Script" uid="uid://dtai88cmn3fbp" path="res://enemy.gd" id="14_hiqwa"]
-[ext_resource type="Texture2D" uid="uid://gkb5kaajw5qm" path="res://Sprites/Player/Idle/idle.png" id="15_2u3nc"]
+[ext_resource type="PackedScene" uid="uid://c01c3n8mm8r84" path="res://player.tscn" id="1_tlwt5"]
+[ext_resource type="Script" uid="uid://bgti48t1vixg5" path="res://enemy.gd" id="14_hiqwa"]
+[ext_resource type="Texture2D" uid="uid://c3mm5j7518xxy" path="res://Sprites/Player/Idle/idle.png" id="15_2u3nc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2u3nc"]
 size = Vector2(15, 28)
