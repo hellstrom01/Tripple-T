@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=3 format=3 uid="uid://ieisi0gu7asy"]
 
-[ext_resource type="Texture2D" uid="uid://be1gxnr16c8uj" path="res://Tiles/pixel-cyberpunk-interior.png" id="1_avmvc"]
+[ext_resource type="Texture2D" uid="uid://w35ifg7by2l4" path="res://Tiles/pixel-cyberpunk-interior.png" id="1_avmvc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p4up1"]
 texture = ExtResource("1_avmvc")

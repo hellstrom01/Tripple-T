@@ -1,60 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b578wc3pc3kna"]
+[gd_scene load_steps=3 format=3 uid="uid://b578wc3pc3kna"]
 
+[ext_resource type="Script" uid="uid://ced3sy51mcjaq" path="res://world.gd" id="1_fj7yv"]
 [ext_resource type="PackedScene" uid="uid://c01c3n8mm8r84" path="res://player.tscn" id="1_tlwt5"]
-[ext_resource type="Script" uid="uid://bgti48t1vixg5" path="res://enemy.gd" id="14_hiqwa"]
-[ext_resource type="Texture2D" uid="uid://c3mm5j7518xxy" path="res://Sprites/Player/Idle/idle.png" id="15_2u3nc"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2u3nc"]
-size = Vector2(15, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_udxuc"]
-atlas = ExtResource("15_2u3nc")
-region = Rect2(0, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ikiii"]
-atlas = ExtResource("15_2u3nc")
-region = Rect2(48, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cbp6q"]
-atlas = ExtResource("15_2u3nc")
-region = Rect2(96, 0, 48, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_26xuy"]
-atlas = ExtResource("15_2u3nc")
-region = Rect2(144, 0, 48, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bc84e"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_udxuc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ikiii")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cbp6q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_26xuy")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_fj7yv")
 
 [node name="Player" parent="." instance=ExtResource("1_tlwt5")]
-
-[node name="Enemy" type="CharacterBody2D" parent="."]
-script = ExtResource("14_hiqwa")
-target_path = NodePath("../Player")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-position = Vector2(0.5, -2)
-shape = SubResource("RectangleShape2D_2u3nc")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
-sprite_frames = SubResource("SpriteFrames_bc84e")
-frame_progress = 0.74703985
