@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var player := $Player
-const EnemyScene := preload("res://Enemy.tscn")
+const EnemyScene := preload("res://scenes/units/enemy.tscn")
 
 func _ready() -> void:
 	# Ee: spawn one near the player at start

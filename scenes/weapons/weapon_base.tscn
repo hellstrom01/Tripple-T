@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwwnoigv4bkp7"]
+
+[ext_resource type="Script" uid="uid://dnj31361blrw0" path="res://scripts/weapons/weapon.gd" id="1_no4jq"]
+[ext_resource type="PackedScene" uid="uid://br603hkref2j4" path="res://scenes/weapons/bullet.tscn" id="2_nmho7"]
+[ext_resource type="AudioStream" uid="uid://cyp6hctbllhbm" path="res://assets/sounds/shoot_sound.wav" id="3_jpfg6"]
+[ext_resource type="Texture2D" uid="uid://f3rxvron6c7t" path="res://assets/sprites/Guns/Gun1.png" id="4_h437y"]
+[ext_resource type="Texture2D" uid="uid://bbxhe3rx06etx" path="res://assets/sprites/Guns/effects.png" id="5_xwh6a"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_no4jq")
+bullet_scene = ExtResource("2_nmho7")
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jpfg6")
+volume_db = -7.068
+pitch_scale = 1.08
+attenuation = 28.840023
+
+[node name="FireTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Visual" type="Node2D" parent="."]
+
+[node name="GunSprite" type="Sprite2D" parent="Visual"]
+position = Vector2(-3, -6)
+texture = ExtResource("4_h437y")
+centered = false
+
+[node name="Muzzle" type="Marker2D" parent="Visual"]
+position = Vector2(18.020851, -2.5389252)
+
+[node name="MuzzleFlash" type="Sprite2D" parent="Visual/Muzzle"]
+visible = false
+position = Vector2(4, 0)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_xwh6a")
+region_enabled = true
+region_rect = Rect2(91, 14, 36, 22)

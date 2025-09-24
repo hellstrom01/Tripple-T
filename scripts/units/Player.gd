@@ -10,6 +10,8 @@ var facing_dir := "down"
 @onready var weapon_anchor: Node2D = $WeaponAnchor
 
 func _ready() -> void:
+	add_to_group("Player")
+	
 	if weapon_scene:
 		weapon = weapon_scene.instantiate() as Node2D
 		weapon_anchor.add_child(weapon)

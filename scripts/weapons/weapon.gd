@@ -75,6 +75,7 @@ func _fire_once() -> void:
 
 		var bullet := bullet_scene.instantiate()
 		get_tree().current_scene.add_child(bullet)
+		bullet.speed = bullet_speed
 		bullet.global_position = muzzle.global_position
 		bullet.rotation = dir.angle()
 		if "velocity" in bullet:
